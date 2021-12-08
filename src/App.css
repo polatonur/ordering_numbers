@@ -1,7 +1,11 @@
 @import "https://unpkg.com/open-props";
-
+h1 {
+  text-align: center;
+  margin: 50px 0;
+}
 .card_list {
   display: flex;
+  justify-content: center;
 }
 .card {
   box-shadow: var(--shadow-1);

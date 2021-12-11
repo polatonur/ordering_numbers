@@ -1,18 +1,33 @@
-import { useDrag } from "react-dnd";
 import Card from "./Card";
+import initialData from "../initialData";
+import { Numbers } from "../initialData";
+import { Droppable } from "react-beautiful-dnd";
 
-// create an array 0 - 99
-const numbers: number[] = Array(10)
-  .fill(0)
-  .map((elem, index) => index);
+console.log(initialData);
 
-const List = () => {
+interface Prosp {
+  numbers: Numbers;
+  rowId: string;
+}
+
+const List = ({ numbers, rowId }: Prosp) => {
+  console.log(numbers);
+
   return (
-    <div className="card_list">
-      {numbers.map((number) => {
-        return <Card key={number} number={number} />;
-      })}
-    </div>
+    <Droppable droppableId={rowId} direction="horizontal">
+      {(provided) => (
+        <div
+          className="card_list"
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+        >
+          {numbers.map((number, index) => {
+            return <Card key={number} number={number} index={index} />;
+          })}
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   );
 };
 

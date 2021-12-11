@@ -11,8 +11,6 @@ interface Prosp {
 }
 
 const List = ({ numbers, rowId }: Prosp) => {
-  console.log(numbers);
-
   return (
     <Droppable droppableId={rowId} direction="horizontal">
       {(provided) => (
@@ -22,7 +20,7 @@ const List = ({ numbers, rowId }: Prosp) => {
           {...provided.droppableProps}
         >
           {numbers.map((number, index) => {
-            return <Card key={number} number={number} index={index} />;
+            return <Card key={number.id} number={number.value} index={index} />;
           })}
           {provided.placeholder}
         </div>

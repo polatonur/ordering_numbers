@@ -9,10 +9,14 @@
   "dependencies": {
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/styled-components": "^5.1.17",
+    "dequal": "^2.0.2",
+    "nanoid": "^3.1.30",
     "open-props": "^1.0.12",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
+    "react-confetti": "^6.0.1",
     "react-dom": "^17.0.2",
+    "react-use": "^17.3.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

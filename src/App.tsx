@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import List from "./components/List";
@@ -9,10 +9,14 @@ import initialData from "./initialData";
 import { useState } from "react";
 import { dequal } from "dequal";
 
-const Container = styled.div`
+interface ContainerProps {
+  isOrder: boolean;
+}
+
+const Container = styled("div")<ContainerProps>`
   border: 2px solid black;
   border-radius: 3px;
-  background-color: skyblue;
+  background-color: ${(props) => (props.isOrder ? "green" : "skyblue")};
 `;
 
 function App() {
@@ -20,7 +24,7 @@ function App() {
   const { numbers, row } = state;
   const sortedNumbers = [...numbers].sort((a, b) => a.value - b.value);
   const isOrder = dequal(numbers, sortedNumbers);
-  const { width, height } = useWindowSize();
+  // const { width, height } = useWindowSize();
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination, draggableId } = result;
@@ -40,13 +44,10 @@ function App() {
   };
 
   return (
-    <div
-      className="app"
-      style={{ backgroundColor: isOrder ? "green" : "skyblue" }}
-    >
+    <div className="app">
       {isOrder && <Confetti />}
       <DragDropContext onDragEnd={onDragEnd}>
-        <Container>
+        <Container isOrder={isOrder}>
           <h1>Order The Numbers</h1>
           <List key={row.id} numbers={numbers} rowId={row.id} />
         </Container>

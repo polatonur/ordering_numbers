@@ -8,6 +8,8 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import initialData from "./initialData";
 import { useState } from "react";
 import { dequal } from "dequal";
+import { LevelPRovider, useLevel } from "./context/LevelContext";
+import Level from "./components/Level";
 
 interface ContainerProps {
   isOrder: boolean;
@@ -25,6 +27,8 @@ function App() {
   const sortedNumbers = [...numbers].sort((a, b) => a.value - b.value);
   const isOrder = dequal(numbers, sortedNumbers);
   // const { width, height } = useWindowSize();
+
+  const context = useLevel();
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination, draggableId } = result;
@@ -46,12 +50,16 @@ function App() {
   return (
     <div className="app">
       {isOrder && <Confetti />}
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Container isOrder={isOrder}>
-          <h1>Order The Numbers</h1>
-          <List key={row.id} numbers={numbers} rowId={row.id} />
-        </Container>
-      </DragDropContext>
+      {context.state.level ? (
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Container isOrder={isOrder}>
+            <h1>Order The Numbers</h1>
+            <List key={row.id} numbers={numbers} rowId={row.id} />
+          </Container>
+        </DragDropContext>
+      ) : (
+        <Level />
+      )}
     </div>
   );
 }

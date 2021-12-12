@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { createContext, useReducer, ReactNode, FC } from "react";
+import { useContext, useMemo } from "react";
+import { createContext, useReducer, ReactNode, Dispatch } from "react";
 
 type LevelState = { level: string | null };
 type Action = {
-  type: "EASY" | "MEDIUM" | "HARD";
+  type: number;
 };
 interface LevelContextValue {
   state: LevelState;
-  dispatch: React.Dispatch<Action>;
+  dispatch: Dispatch<Action>;
 }
 
 const initialValue: LevelContextValue = {
@@ -18,12 +18,14 @@ const initialValue: LevelContextValue = {
 const LevelContext = createContext(initialValue);
 
 const levelReducer = (state: LevelState, { type }: Action) => {
+  console.log(`dispatch with ${type}`);
+
   switch (type) {
-    case "EASY":
+    case 1:
       return { level: "EASY" };
-    case "MEDIUM":
+    case 2:
       return { level: "MEDIUM" };
-    case "HARD":
+    case 3:
       return { level: "HARD" };
     default:
       return state;
@@ -34,11 +36,12 @@ interface Props {
   children?: ReactNode | undefined;
 }
 
-const LevelPRovider = (props: Props) => {
+const LevelProvider = (props: Props) => {
   const [state, dispatch] = useReducer(levelReducer, { level: "EASY" });
+
   const value = { state, dispatch };
   return (
-    <LevelContext.Provider value={value}>
+    <LevelContext.Provider value={{ state, dispatch }}>
       {props.children}
     </LevelContext.Provider>
   );
@@ -46,11 +49,12 @@ const LevelPRovider = (props: Props) => {
 
 const useLevel = () => {
   const context = useContext(LevelContext);
+
   if (!context) {
     throw new Error(`No context this hook must be used inside a provider`);
   }
   return context;
 };
 
-export { useLevel, LevelPRovider };
+export { useLevel, LevelProvider };
 export type { LevelState, Action };

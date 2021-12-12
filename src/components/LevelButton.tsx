@@ -1,8 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
-import useSound from "use-sound";
-import selectSound from "../assets/sounds/button_select.mp3";
-import buttonNavigate from "../assets/sounds/button_navigate.wav";
-import { useEffect, useState } from "react";
+import { useLevel } from "../context/LevelContext";
+
 interface buttonProps {
   isActive: boolean;
 }
@@ -27,64 +26,19 @@ const Button = styled.button<buttonProps>`
 type Props = {
   name: string;
   index: number;
+  activeButton: number;
 };
-const LevelButton = ({ name, index }: Props) => {
-  const [activeButton, setActiveButton] = useState<null | number>(null);
-  const [playOnSelect] = useSound(selectSound, { volume: 0.5 });
-  const [playOnNavigate] = useSound(buttonNavigate, { volume: 0.5 });
-  console.log(activeButton);
 
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-        console.log(`active button inside useEffect is ${activeButton}`);
-
-        if (e.key === "ArrowDown") {
-          if (activeButton) {
-            setActiveButton(activeButton + 1);
-            console.log(
-              `incremnetedd  active button prev = ${activeButton} new value =  ${
-                activeButton + 1
-              }`
-            );
-          } else {
-            setActiveButton(1);
-            console.log(`active button initialised by 1`);
-          }
-        } else if (e.key === "ArrowUp") {
-          if (activeButton) {
-            setActiveButton(activeButton - 1);
-            console.log(
-              `decremneted  active button prev = ${activeButton} new value =  ${
-                activeButton + 1
-              }`
-            );
-          } else {
-            setActiveButton(3);
-            console.log(`initialised to 3`);
-          }
-        }
-        playOnNavigate();
-        return;
-      } else {
-        console.log("other");
-      }
-    };
-    const onKeyUp = () => {};
-
-    document.addEventListener("keydown", onKeyDown);
-    document.addEventListener("keyup", onKeyUp);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.removeEventListener("keyup", onKeyUp);
-    };
-  }, []);
+const LevelButton = ({ name, index, activeButton }: Props) => {
+  const context = useLevel();
+  console.log("this must work");
+  console.log(context);
 
   return (
     <Button
       isActive={activeButton === index + 1}
-      onMouseOver={() => playOnNavigate()}
-      onClick={() => playOnSelect()}
+      //   onMouseOver={() => playOnNavigate()}
+      //   onClick={() => playOnSelect()}
     >
       {name}
     </Button>
@@ -92,3 +46,6 @@ const LevelButton = ({ name, index }: Props) => {
 };
 
 export default LevelButton;
+function LevelContext(LevelContext: any) {
+  throw new Error("Function not implemented.");
+}

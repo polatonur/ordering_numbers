@@ -8,7 +8,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import initialData from "./initialData";
 import { useState } from "react";
 import { dequal } from "dequal";
-import { LevelPRovider, useLevel } from "./context/LevelContext";
+import { LevelProvider, useLevel } from "./context/LevelContext";
 import Level from "./components/Level";
 
 interface ContainerProps {

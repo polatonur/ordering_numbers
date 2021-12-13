@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { useIsover } from "../context/RemainingTimeContext";
 import { useTimer } from "../hooks/useTimer";
@@ -31,10 +32,16 @@ const Clock = styled.div<clockProps>`
 
 const Timer = () => {
   const { timer, stop } = useTimer();
-  const { setState } = useIsover();
-  if (timer === 0) {
-    setState(true);
-  }
+  const { setIsTimerOver } = useIsover();
+  console.log("hello timer");
+
+  useMemo(() => setIsTimerOver(false), []);
+
+  useEffect(() => {
+    if (timer === 0) {
+      setIsTimerOver(true);
+    }
+  }, [timer]);
   const status = timer === 0 ? "Finished" : timer < 5 ? "Alert" : "Normal";
   return (
     <Container>

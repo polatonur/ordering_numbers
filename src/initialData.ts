@@ -30,4 +30,4 @@ const initialData = () => {
     row,
   };
 };
-export default initialData();
+export default initialData;

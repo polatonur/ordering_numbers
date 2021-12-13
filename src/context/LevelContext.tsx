@@ -27,6 +27,8 @@ const levelReducer = (state: LevelState, { type }: Action) => {
       return { level: "MEDIUM" };
     case 3:
       return { level: "HARD" };
+    case 0:
+      return { level: null };
     default:
       return state;
   }

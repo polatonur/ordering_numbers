@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { useLevel } from "../context/LevelContext";
+import { useIsover } from "../context/RemainingTimeContext";
+import initialData from "../initialData";
 
 const Container = styled.div`
   position: fixed;
@@ -12,6 +15,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 `;
 const Message = styled.div`
   display: flex;
@@ -43,7 +47,20 @@ const Button = styled.button`
   cursor: pointer;
   margin: 20px;
 `;
-const Fail = () => {
+type Props = {
+  setState: React.Dispatch<React.SetStateAction<any>>;
+  reset: () => void;
+};
+const Fail = ({ setState, reset }: Props) => {
+  const { state, dispatch } = useLevel();
+  const { isTimerOver, setIsTimerOver } = useIsover();
+
+  const handleClickPlayagain = () => {
+    reset();
+  };
+  const handleClickQuit = () => {
+    dispatch({ type: 0 });
+  };
   return (
     <Container>
       <Message>
@@ -51,8 +68,8 @@ const Fail = () => {
         <Title>You Failed</Title>
         <div>
           {" "}
-          <Button>Retry</Button>
-          <Button>Quit</Button>
+          <Button onClick={handleClickPlayagain}>Retry</Button>
+          <Button onClick={handleClickQuit}>Quit</Button>
         </div>
       </Message>
     </Container>

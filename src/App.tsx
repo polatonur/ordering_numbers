@@ -1,10 +1,10 @@
 import "./App.css";
 import { useLevel } from "./context/LevelContext";
 import Level from "./components/Level";
-import Timer from "./components/Timer";
 import DraggableList from "./components/DraggableList";
 import styled from "styled-components";
 import { IsOverProvider } from "./context/RemainingTimeContext";
+import { useState } from "react";
 
 const Title = styled.h1`
   font-size: 6rem;
@@ -12,9 +12,9 @@ const Title = styled.h1`
 `;
 
 function App() {
-  // const { width, height } = useWindowSize();
-
   const context = useLevel();
+  const [isOrderCorrect, setIsOrderCorrect] = useState(false);
+  console.log("app render");
 
   return (
     <div className="app">
@@ -22,8 +22,7 @@ function App() {
         <>
           <IsOverProvider>
             <Title>Put Numbers In Correct Order</Title>
-            <DraggableList />
-            <Timer />
+            <DraggableList setIsOrderCorrect={setIsOrderCorrect} />
           </IsOverProvider>
         </>
       ) : (

@@ -13,7 +13,7 @@ const useTimer = () => {
     } else if (level === "MEDIUM") {
       return 30;
     } else {
-      return 10;
+      return 12;
     }
   };
 
@@ -24,7 +24,7 @@ const useTimer = () => {
   useEffect(() => {
     const handleTimer = () => {
       callRef.current++;
-      console.log(`step ${callRef.current}paused is ===>`, paused);
+      // console.log(`step ${callRef.current}paused is ===>`, paused);
 
       if (paused || timer === 0) {
         clearInterval(timerInterval);

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import Confetti from "react-confetti";
+import { useIsover } from "../context/RemainingTimeContext";
+import { useLevel } from "../context/LevelContext";
+import React from "react";
+import initialData from "../initialData";
 
 const Container = styled.div`
   position: fixed;
@@ -13,6 +17,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 `;
 const Message = styled.div`
   display: flex;
@@ -44,7 +49,20 @@ const Button = styled.button`
   cursor: pointer;
   margin: 20px;
 `;
-const Succes = () => {
+
+type Props = {
+  setState: React.Dispatch<React.SetStateAction<any>>;
+  reset: () => void;
+};
+const Succes = ({ setState, reset }: Props) => {
+  const { state, dispatch } = useLevel();
+
+  const handleClickPlayagain = () => {
+    reset();
+  };
+  const handleClickQuit = () => {
+    dispatch({ type: 0 });
+  };
   return (
     <Container>
       <Confetti />
@@ -53,8 +71,8 @@ const Succes = () => {
         <Title>Conguratulations You Win</Title>
         <div>
           {" "}
-          <Button>Play again</Button>
-          <Button>Quit</Button>
+          <Button onClick={handleClickPlayagain}>Play again</Button>
+          <Button onClick={handleClickQuit}>Quit</Button>
         </div>
       </Message>
     </Container>

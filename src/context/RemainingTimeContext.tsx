@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 type IsOverType = {
-  state: boolean;
-  setState: React.Dispatch<React.SetStateAction<boolean>>;
+  isTimerOver: boolean;
+  setIsTimerOver: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const RemainingTimeContext = createContext<IsOverType | null>(null);
 
@@ -9,8 +9,11 @@ type Props = {
   children: React.ReactNode;
 };
 const IsOverProvider = (props: Props) => {
-  const [state, setState] = useState(false);
-  const value = { state, setState };
+  const [isTimerOver, setIsTimerOver] = useState(false);
+  console.log("isOverCalled");
+  console.log(isTimerOver);
+
+  const value = { isTimerOver, setIsTimerOver };
   return <RemainingTimeContext.Provider value={value} {...props} />;
 };
 

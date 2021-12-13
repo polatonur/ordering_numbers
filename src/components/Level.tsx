@@ -86,6 +86,8 @@ const Level = () => {
               name={item}
               index={index}
               activeButton={activeButton}
+              playOnNavigate={playOnNavigate}
+              playOnSelect={playOnSelect}
             />
           );
         })}

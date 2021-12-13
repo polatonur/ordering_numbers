@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import styled from "styled-components";
+import { PlayFunction } from "use-sound/dist/types";
 import { useLevel } from "../context/LevelContext";
-
 interface buttonProps {
   isActive: boolean;
 }
@@ -27,18 +26,29 @@ type Props = {
   name: string;
   index: number;
   activeButton: number;
+  playOnNavigate: PlayFunction;
+  playOnSelect: PlayFunction;
 };
 
-const LevelButton = ({ name, index, activeButton }: Props) => {
-  const context = useLevel();
-  console.log("this must work");
-  console.log(context);
+const LevelButton = ({
+  name,
+  index,
+  activeButton,
+  playOnNavigate,
+  playOnSelect,
+}: Props) => {
+  const { state, dispatch } = useLevel();
+
+  const handleClick = () => {
+    playOnSelect();
+    dispatch({ type: index + 1 });
+  };
 
   return (
     <Button
       isActive={activeButton === index + 1}
-      //   onMouseOver={() => playOnNavigate()}
-      //   onClick={() => playOnSelect()}
+      onMouseOver={() => playOnNavigate()}
+      onClick={handleClick}
     >
       {name}
     </Button>

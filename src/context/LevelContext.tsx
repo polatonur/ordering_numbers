@@ -37,7 +37,7 @@ interface Props {
 }
 
 const LevelProvider = (props: Props) => {
-  const [state, dispatch] = useReducer(levelReducer, { level: "EASY" });
+  const [state, dispatch] = useReducer(levelReducer, { level: null });
 
   const value = { state, dispatch };
   return (

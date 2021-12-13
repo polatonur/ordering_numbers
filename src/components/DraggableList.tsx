@@ -10,6 +10,8 @@ import { useIsover } from "../context/RemainingTimeContext";
 import Fail from "./Fail";
 import Timer from "./Timer";
 import { useLevel } from "../context/LevelContext";
+import useSound from "use-sound";
+import tikSound from "../assets/sounds/tik.wav";
 
 const Container = styled.div`
   padding: 50px;
@@ -45,6 +47,8 @@ const DraggableList = ({ setIsOrderCorrect }: Props) => {
   const { numbers, row } = state;
   const { isTimerOver, setIsTimerOver } = useIsover();
 
+  const [tik] = useSound(tikSound, { volume: 0.5 });
+
   const reset = () => {
     setState(initialData());
     setIsTimerOver(false);
@@ -75,6 +79,7 @@ const DraggableList = ({ setIsOrderCorrect }: Props) => {
     newList.splice(source.index, 1);
     newList.splice(destination.index, 0, numbers[source.index]);
     setState({ ...state, numbers: newList });
+    tik();
   };
 
   const handleClickQuit = () => {
@@ -84,7 +89,7 @@ const DraggableList = ({ setIsOrderCorrect }: Props) => {
   return (
     <>
       {isOrder && isTimerOver === false ? (
-        <Succes setState={setState} reset={reset} />
+        <Succes reset={reset} />
       ) : isTimerOver === true ? (
         <Fail setState={setState} reset={reset} />
       ) : (

@@ -2,8 +2,9 @@ import styled from "styled-components";
 import Confetti from "react-confetti";
 import { useIsover } from "../context/RemainingTimeContext";
 import { useLevel } from "../context/LevelContext";
-import React from "react";
-import initialData from "../initialData";
+import React, { useEffect } from "react";
+import winSound from "../assets/sounds/win.wav";
+import useSound from "use-sound";
 
 const Container = styled.div`
   position: fixed;
@@ -51,11 +52,15 @@ const Button = styled.button`
 `;
 
 type Props = {
-  setState: React.Dispatch<React.SetStateAction<any>>;
   reset: () => void;
 };
-const Succes = ({ setState, reset }: Props) => {
+const Succes = ({ reset }: Props) => {
   const { state, dispatch } = useLevel();
+  const [win] = useSound(winSound, { volume: 0.5 });
+  win();
+  // useEffect(() => {
+  //   win();
+  // }, []);
 
   const handleClickPlayagain = () => {
     reset();

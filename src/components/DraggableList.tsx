@@ -1,10 +1,13 @@
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import styled from "styled-components";
 import List from "../components/List";
-import Confetti from "react-confetti";
 import initialData from "../initialData";
 import { useState } from "react";
 import { dequal } from "dequal";
+import Succes from "./Succes";
+import { useTimer } from "../hooks/useTimer";
+import { useIsover } from "../context/RemainingTimeContext";
+import Fail from "./Fail";
 
 const Container = styled.div`
   padding: 50px;
@@ -39,9 +42,11 @@ const DraggableList = () => {
     setState({ ...state, numbers: newList });
   };
 
+  const context = useIsover();
   return (
     <>
-      {isOrder && <Confetti />}
+      {isOrder && context.state === false && <Succes />}
+      {context.state === true && <Fail />}
       <DragDropContext onDragEnd={onDragEnd}>
         <Container>
           <List key={row.id} numbers={numbers} rowId={row.id} />

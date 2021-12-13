@@ -4,6 +4,7 @@ import Level from "./components/Level";
 import Timer from "./components/Timer";
 import DraggableList from "./components/DraggableList";
 import styled from "styled-components";
+import { IsOverProvider } from "./context/RemainingTimeContext";
 
 const Title = styled.h1`
   font-size: 6rem;
@@ -14,15 +15,16 @@ function App() {
   // const { width, height } = useWindowSize();
 
   const context = useLevel();
-  console.log(context.state);
 
   return (
     <div className="app">
       {context.state.level ? (
         <>
-          <Title>Put Numbers In Correct Order</Title>
-          <DraggableList />
-          <Timer />
+          <IsOverProvider>
+            <Title>Put Numbers In Correct Order</Title>
+            <DraggableList />
+            <Timer />
+          </IsOverProvider>
         </>
       ) : (
         <Level />

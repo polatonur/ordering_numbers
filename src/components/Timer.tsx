@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useLevel } from "../context/LevelContext";
+import { useIsover } from "../context/RemainingTimeContext";
+import { useTimer } from "../hooks/useTimer";
 
 interface clockProps {
   status: string;
@@ -30,38 +30,17 @@ const Clock = styled.div<clockProps>`
 `;
 
 const Timer = () => {
-  const {
-    state: { level },
-  } = useLevel();
-
-  //   Calculate timer
-  const initialTime = () => {
-    if (level === "EASY") {
-      return 60;
-    } else if (level === "MEDIUM") {
-      return 30;
-    } else {
-      return 10;
-    }
-  };
-  const [timer, setTimer] = useState(() => initialTime());
-
+  const { timer, stop } = useTimer();
+  const { setState } = useIsover();
+  if (timer === 0) {
+    setState(true);
+  }
   const status = timer === 0 ? "Finished" : timer < 5 ? "Alert" : "Normal";
-  useEffect(() => {
-    const handleTimer = () => {
-      if (timer > 0) {
-        setTimer((prev) => prev - 1);
-      }
-    };
-    const timerInterval = setInterval(handleTimer, 1000);
-
-    return () => {
-      clearInterval(timerInterval);
-    };
-  }, [timer]);
   return (
     <Container>
-      <Clock status={status}>{timer}</Clock>
+      <Clock onClick={() => stop()} status={status}>
+        {timer}
+      </Clock>
     </Container>
   );
 };

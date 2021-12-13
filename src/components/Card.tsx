@@ -1,12 +1,14 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { Number } from "../initialData";
+
 type Props = {
-  number: number;
+  number: Number;
   index: number;
 };
 const Card = ({ number, index }: Props) => {
   return (
-    <Draggable index={index} draggableId={number.toString()}>
+    <Draggable index={index} draggableId={number.id}>
       {(provided) => (
         <div
           {...provided.draggableProps}
@@ -14,7 +16,7 @@ const Card = ({ number, index }: Props) => {
           ref={provided.innerRef}
           className="card"
         >
-          {number}
+          {number.value}
         </div>
       )}
     </Draggable>

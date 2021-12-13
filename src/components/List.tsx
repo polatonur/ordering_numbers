@@ -20,7 +20,7 @@ const List = ({ numbers, rowId }: Prosp) => {
           {...provided.droppableProps}
         >
           {numbers.map((number, index) => {
-            return <Card key={number.id} number={number.value} index={index} />;
+            return <Card key={number.id} number={number} index={index} />;
           })}
           {provided.placeholder}
         </div>

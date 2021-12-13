@@ -5,7 +5,6 @@ import initialData from "../initialData";
 import { createContext, useEffect, useMemo, useState } from "react";
 import { dequal } from "dequal";
 import Succes from "./Succes";
-import { useTimer } from "../hooks/useTimer";
 import { useIsover } from "../context/RemainingTimeContext";
 import Fail from "./Fail";
 import Timer from "./Timer";
@@ -20,9 +19,20 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1400px) {
+    padding: 30px;
+  }
+  @media (max-width: 1400px) {
+    padding: 10px;
+  }
+  @media (max-width: 1100px) {
+    width: 97vw;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
 `;
 const Quit = styled.div`
-  width: 50%;
+  width: 60%;
   margin: 50px;
   display: flex;
   align-items: center;

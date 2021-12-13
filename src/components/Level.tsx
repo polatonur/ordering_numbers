@@ -18,6 +18,14 @@ const Container = styled.div`
 const Tittle = styled.h1`
   font-size: 4rem;
   margin-bottom: 50px;
+  @media (max-width: 700px) {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 500px) {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
 `;
 const Levels = styled.div`
 display:flex;
@@ -25,9 +33,14 @@ align-items:center;
 justify-content:center;
 flex-direction:column;
 padding:30px;
-max-width  800px;
+width  800px;
 border:5px solid #F2AE2E;
-border-radius:10px
+border-radius:10px;
+@media (max-width: 900px) {
+  width  80%;
+  padding:20px
+}
+
 `;
 const levels = ["🤩 EASY", "😎 MEDIUM", "🥵 HARD"];
 type ActiveButton = number;

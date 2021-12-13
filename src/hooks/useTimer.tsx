@@ -9,7 +9,7 @@ const useTimer = () => {
   //   Calculate timer
   const initialTime = () => {
     if (level === "EASY") {
-      return 60;
+      return 600;
     } else if (level === "MEDIUM") {
       return 30;
     } else {

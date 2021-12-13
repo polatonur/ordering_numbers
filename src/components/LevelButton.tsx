@@ -11,7 +11,7 @@ const Button = styled.button<buttonProps>`
   border-radius: 20px;
   border: 2px solid #f2ae2e;
   margin-bottom: 20px;
-  width: 500px;
+  width: 95%;
   cursor: pointer;
   font-size: 2rem;
   font-family: "Handlee", cursive;
@@ -21,6 +21,12 @@ const Button = styled.button<buttonProps>`
     background-color: skyblue;
   }
   background-color: ${(props) => (props.isActive ? "skyblue" : "grey")};
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 400px) {
+    padding: 5px;
+  }
 `;
 type Props = {
   name: string;

@@ -10,9 +10,13 @@ interface Prosp {
   rowId: string;
 }
 
+const direction = () => {
+  return window.innerWidth > 650 ? "horizontal" : "vertical";
+};
+
 const List = ({ numbers, rowId }: Prosp) => {
   return (
-    <Droppable droppableId={rowId} direction="horizontal">
+    <Droppable droppableId={rowId} direction={direction()}>
       {(provided) => (
         <div
           className="card_list"

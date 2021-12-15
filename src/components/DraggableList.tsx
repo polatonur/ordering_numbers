@@ -27,8 +27,9 @@ const Container = styled.div`
   }
   @media (max-width: 1100px) {
     width: 97vw;
-    overflow: hidden;
-    flex-wrap: wrap;
+  }
+  @media (max-width: 650px) {
+    width: max-content;
   }
 `;
 const Quit = styled.div`
@@ -37,6 +38,9 @@ const Quit = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 650px) {
+    margin: 20px;
+  }
 `;
 const QuitButton = styled.button`
   padding: 20px;
@@ -45,6 +49,35 @@ const QuitButton = styled.button`
   cursor: pointer;
   &:hover {
     opacity: 0.7;
+  }
+`;
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 650px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 650px) {
+    height: 50vh;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30px;
+  }
+  @media (max-width: 350px) {
+    height: 50vh;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
   }
 `;
 
@@ -97,7 +130,7 @@ const DraggableList = ({ setIsOrderCorrect }: Props) => {
   };
 
   return (
-    <>
+    <Main>
       {isOrder && isTimerOver === false ? (
         <Succes reset={reset} />
       ) : isTimerOver === true ? (
@@ -111,13 +144,15 @@ const DraggableList = ({ setIsOrderCorrect }: Props) => {
               </OrderContext.Provider>
             </Container>
           </DragDropContext>
-          <Timer />
-          <Quit>
-            <QuitButton onClick={handleClickQuit}>Quit</QuitButton>
-          </Quit>
+          <Bottom>
+            <Timer />
+            <Quit>
+              <QuitButton onClick={handleClickQuit}>Quit</QuitButton>
+            </Quit>
+          </Bottom>
         </>
       )}
-    </>
+    </Main>
   );
 };
 

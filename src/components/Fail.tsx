@@ -26,13 +26,24 @@ const Message = styled.div`
   background-color: darksalmon;
   width: 700px;
   padding: 50px;
+  @media (max-width: 650px) {
+    width: 90vw;
+    padding: 20px;
+  }
 `;
 const Title = styled.h1`
   font-size: 4em;
   margin-bottom: 50px;
+  @media (max-width: 650px) {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
 `;
 const Emoji = styled.h1`
   font-size: 7rem;
+  @media (max-width: 650px) {
+    font-size: 5rem;
+  }
 `;
 const Button = styled.button`
   padding: 20px;
@@ -46,6 +57,9 @@ const Button = styled.button`
   }
   cursor: pointer;
   margin: 20px;
+  @media (max-width: 650px) {
+    padding: 10px;
+  }
 `;
 type Props = {
   setState: React.Dispatch<React.SetStateAction<any>>;

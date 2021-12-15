@@ -28,6 +28,10 @@ const Clock = styled.div<clockProps>`
   border: 2px solid black;
   border-radius: 50%;
   font-size: 3rem;
+  @media (max-width: 650px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const Timer = () => {

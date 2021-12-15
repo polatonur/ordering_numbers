@@ -14,6 +14,7 @@ const Title = styled.h1`
   }
   @media (max-width: 800px) {
     font-size: 3rem;
+    margin-bottom: 20px;
   }
   @media (max-width: 400px) {
     font-size: 2rem;

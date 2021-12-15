@@ -8,7 +8,8 @@ export type Numbers = Array<Number>;
 export type ListOrder = Array<string>;
 
 const initialData = () => {
-  const numbers: Numbers = Array(10)
+  const length = window.innerHeight > 1000 ? 10 : 7;
+  const numbers: Numbers = Array(length)
     .fill(0)
     .map((elem, index) => {
       const randomNumber = Math.floor(Math.random() * 100);

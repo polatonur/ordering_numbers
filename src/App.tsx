@@ -26,13 +26,8 @@ function App() {
   const [isOrderCorrect, setIsOrderCorrect] = useState(false);
   console.log("app render");
 
-  const inneHeight = window.innerHeight;
-  const appStyle = {
-    height: inneHeight,
-  };
-
   return (
-    <div className="app" style={appStyle}>
+    <div className="app">
       {context.state.level ? (
         <>
           <IsOverProvider>

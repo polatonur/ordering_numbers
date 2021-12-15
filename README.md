@@ -2,7 +2,7 @@
 <br />
 <p align="center">
     <img src="https://github.com/polatonur/readme_pics/blob/master/react.svg" alt="Logo" width="80" height="80"> +
-    <img src="https://github.com/polatonur/readme_pics/blob/master/styledcomponents.png" alt="Logo" width="80" height="80"> +
+    <img src="https://github.com/polatonur/readme_pics/blob/master/styledComponents.png?raw=true" alt="Logo" width="80" height="80"> +
     <img src="https://github.com/polatonur/readme_pics/blob/master/Typescript.svg" alt="Logo" width="80" height="80">
 
   <h3 align="center">Numbers Game </h3>
@@ -45,7 +45,7 @@
 
 Select your level and put numbers in correct order and you win the game 🥳
 
-![alt text](https://github.com/polatonur/readme_pics/blob/master/numbers_main.png?raw=true)
+![alt text](https://github.com/polatonur/readme_pics/blob/master/numbers_level.png?raw=true)
 
 ### Built With
 
@@ -77,7 +77,7 @@ Download App and install packages
 
 <!-- ROADMAP -->
 
-![alt text](https://github.com/polatonur/readme_pics/blob/numbers_main.png?raw=true)
+![alt text](https://github.com/polatonur/readme_pics/blob/master/numbers_main.png?raw=true)
 
 ## Contact
 

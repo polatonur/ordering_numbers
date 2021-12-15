@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="src/assets/images/react.svg" alt="Logo" width="80" height="80"> +
-    <img src="src/assets/images/styledcomponents.svg" alt="Logo" width="80" height="80"> +
+    <img src="https://github.com/polatonur/readme_pics/blob/master/react.svg" alt="Logo" width="80" height="80"> +
+    <img src="https://github.com/polatonur/readme_pics/blob/master/styledcomponents.png" alt="Logo" width="80" height="80"> +
     <img src="https://github.com/polatonur/readme_pics/blob/master/Typescript.svg" alt="Logo" width="80" height="80">
 
   <h3 align="center">Numbers Game </h3>
@@ -45,7 +45,7 @@
 
 Select your level and put numbers in correct order and you win the game 🥳
 
-![alt text](https://github.com/polatonur/readme_pics/blob/numbers_level.png?raw=true)
+![alt text](https://github.com/polatonur/readme_pics/blob/master/numbers_main.png?raw=true)
 
 ### Built With
 
@@ -83,4 +83,4 @@ Download App and install packages
 
 Onur POLAT
 
-Project Link: [https://github.com/polatonur/ordering_numbers](https://github.com/polatonur/deliveroo-front-ts)
+Project Link: [https://github.com/polatonur/ordering_numbers](https://github.com/polatonur/ordering_numbers)

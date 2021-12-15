@@ -9,6 +9,7 @@ import { useState } from "react";
 const Title = styled.h1`
   font-size: 6rem;
   margin-bottom: 50px;
+  text-align: center;
   @media (max-width: 1300px) {
     font-size: 4rem;
   }
@@ -18,6 +19,7 @@ const Title = styled.h1`
   }
   @media (max-width: 400px) {
     font-size: 2rem;
+    margin-bottom: 20px;
   }
 `;
 

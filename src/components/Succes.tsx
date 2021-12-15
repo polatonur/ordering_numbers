@@ -5,6 +5,7 @@ import { useLevel } from "../context/LevelContext";
 import React, { useEffect } from "react";
 import winSound from "../assets/sounds/win.wav";
 import useSound from "use-sound";
+import { useWindowSize } from "react-use";
 
 const Container = styled.div`
   position: fixed;
@@ -37,15 +38,17 @@ const Message = styled.div`
 const Title = styled.h1`
   font-size: 4em;
   margin-bottom: 50px;
+  text-align: center;
+
   @media (max-width: 650px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
   }
 `;
 const Emoji = styled.h1`
   font-size: 7rem;
   @media (max-width: 650px) {
-    font-size: 5rem;
+    font-size: 2.5rem;
   }
 `;
 const Button = styled.button`
@@ -73,9 +76,8 @@ const Succes = ({ reset }: Props) => {
   const { state, dispatch } = useLevel();
   const [win] = useSound(winSound, { volume: 0.5 });
   win();
-  // useEffect(() => {
-  //   win();
-  // }, []);
+
+  const { width, height } = useWindowSize();
 
   const handleClickPlayagain = () => {
     reset();
@@ -85,7 +87,7 @@ const Succes = ({ reset }: Props) => {
   };
   return (
     <Container>
-      <Confetti />
+      <Confetti width={width} height={height} />
       <Message>
         <Emoji>🥳</Emoji>
         <Title>Conguratulations You Win</Title>

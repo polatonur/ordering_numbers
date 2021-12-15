@@ -10,10 +10,7 @@
   background-color: bisque;
   font-weight: bold;
 }
-h1 {
-  text-align: center;
-  margin: 50px 0;
-}
+
 .card_list {
   display: flex;
   justify-content: center;
@@ -65,9 +62,6 @@ h1 {
 }
 
 @media (max-width: 650px) {
-  h1 {
-    margin: 10px 0;
-  }
   .card {
     width: 70px;
     height: 40px;

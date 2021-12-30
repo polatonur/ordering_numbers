@@ -8,7 +8,7 @@
   <h3 align="center">Numbers Game </h3>
 
   <p align="center">
-   A simple game created React Beautiful DnD
+   A simple game created with  React Beautiful DnD
 
    <img src="https://user-images.githubusercontent.com/2182637/53611918-54c1ff80-3c24-11e9-9917-66ac3cef513d.png" alt="Logo" width="80" height="80">
     <br />
@@ -72,9 +72,9 @@ Download App and install packages
 
 ### Usage
 
-- npm
+- yarn
   ```sh
-  npm run dev
+  ysrn dev dev
   ```
 
 <!-- ROADMAP -->

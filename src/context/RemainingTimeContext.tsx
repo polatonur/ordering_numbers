@@ -20,7 +20,7 @@ const IsOverProvider = (props: Props) => {
 const useIsover = () => {
   const context = useContext(RemainingTimeContext);
   if (!context) {
-    throw new Error("This hook must be used inside a isoverProvider");
+    throw new Error("This hook must be used inside a isOverProvider");
   }
 
   return context;
